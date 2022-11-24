@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Rubik:ital,wght@0,400;0,700;1,400&family=Sono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="container">
+        <form class="form" id="login">
+            <h1 class="form__title">Logga In</h1>
+            <div class="form__message form__message--error"></div>
+            <div class="form__input-group">
+                <input type="text" class="form__input" id="username" autofocus placeholder="Användarnamn">
+                <div class="form__input-error-message"></div>
+            </div>
+            <div class="form__input-group">
+                <input type="password" class="form__input" id="password" autofocus placeholder="Lösenord">
+                <div class="form__input-error-message"></div>
+            </div>
+            <button class="form__button" type="submit">Logga in</button>
+            <p class="form__text">
+                <a href="./" class="form__link" id="linkForgottenPassword">Glömt lösenord?</a>
+            </p>
+            <p class="form__text">
+                <a class="form__link" href="./" id="linkCreateAccount">Står du ute i kylan? Bli medlem nu</a>
+            </p>
+        </form>
+        <form class="form form--hidden" id="createAccount">
+            <h1 class="form__title">Skapa konto</h1>
+            <div class="form__message form__message--error"></div>
+            <div class="form__input-group">
+                <input type="text" id="signupUsername" class="form__input" autofocus placeholder="Användarnamn">
+                <div class="form__input-error-message"></div>
+            </div>
+            <div class="form__input-group">
+                <input type="password" class="form__input" autofocus placeholder="Lösenord">
+                <div class="form__input-error-message"></div>
+            </div>
+            <div class="form__input-group">
+                <input type="password" class="form__input" autofocus placeholder="Bekräfta lösenord">
+                <div class="form__input-error-message"></div>
+            </div>
+            
+            <button class="form__button" type="submit">Skapa konto</button>
+        
+            <p class="form__text">
+                <a class="form__link" href="./" id="linkLogin">Är du redan medlem? Logga in</a>
+            </p>
+        </form>
+        <form class="form form--hidden" id="forgottenPassword">
+            <h1 class="form__title">Återställ lösenord</h1>
+            <div class="form__message form__message--error"></div>
+            <div class="form__input-group">
+                <input type="text" id="myUsername" class="form__input" autofocus placeholder="Användarnamn">
+                <div class="form__input-error-message"></div>
+            </div>
+            <div class="form__input-group">
+                <input type="password" class="form__input" autofocus placeholder="Emailadress">
+                <div class="form__input-error-message"></div>
+            </div>
+            
+            <button class="form__button" type="submit">Återställ lösenord</button>
+        
+            <p class="form__text">
+                <a class="form__link" href="./" id="linkLogin">Är du redan medlem? Logga in</a>
+            </p>
+        </form>
+        <form class="form form--hidden" id="info">
+            <h1 class="form__title">Information</h1>
+              <p class="form__text">
+                Detta är lite information om mig. Jag vet typ inte vad jag håller på med men fuck it
+            </p>
+            <button class="form__button" type="submit">Logga ut</button>
+        </form>
+      
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>

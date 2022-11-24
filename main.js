@@ -46,31 +46,63 @@ document.addEventListener("DOMContentLoaded", () => {
     loginForm.classList.remove("form--hidden");
     createAccountForm.classList.add("form--hidden");
   });
-  const objPeople = [
-    {
-      username: "janne",
-      password: "test",
-    },
-  ];
+
   loginForm.addEventListener("submit", (e) => {
     let username = document.getElementById("username").value;
     let password = document.getElementById("password").value;
+    let usernameNew = document.getElementById("usernameNew").value;
+    let passwordNew = document.getElementById("passwordNew").value;
+    localStorage.setItem("username", username);
+    localStorage.setItem("password", password);
+    //localStorage.getItem("username" + "password");
 
-    if (username == "janne" && password == "test") {
-      setFormMessage(loginForm, "error", "Lyckad inloggning!");
-      loginForm.classList.add("form--hidden");
-      info.classList.remove("form--hidden");
-    } else {
-      setFormMessage(loginForm, "error", "Ogiltigt användarnamn/lösenord");
+    const objPeople = [
+      {
+        username: "janne",
+        password: "test",
+      },
+      {
+        username: "amanda",
+        password: "plate",
+      },
+    ];
+
+    for (i = 0; i < objPeople.length; i++) {
+      if (
+        username == objPeople[i].username &&
+        password == objPeople[i].password
+      ) {
+        setFormMessage(loginForm, "error", "Lyckad inloggning!");
+        loginForm.classList.add("form--hidden");
+        info.classList.remove("form--hidden");
+        const upperCaseUsername = username.charAt(0).toUpperCase();
+        const usernameWithoutFirstLetter = username.slice(1);
+
+        document.getElementById(
+          "welcomeHeader"
+        ).innerHTML = `Välkommen ${upperCaseUsername}${usernameWithoutFirstLetter}`;
+        document.getElementById(
+          "welcomeText"
+        ).innerHTML = `Detta är ett viktigt meddelande till dig ${upperCaseUsername}${usernameWithoutFirstLetter}. Du har 10 sekunder på dig att logga ut och springa hemifrån! Big brother is watching you`;
+      } else {
+        setFormMessage(loginForm, "error", "Ogiltigt användarnamn/lösenord");
+      }
+
+      e.preventDefault();
     }
 
-    e.preventDefault();
+    function autoLogin() {
+      let username = localStorage.getItem("username");
+      let password = localStorage.getItem("password");
+      document.getElementById("username").innerHTML = "username";
+      document.getElementById("password").innerHTML = "password";
+    }
   });
 
   document.querySelectorAll(".form__input").forEach((inputElement) => {
     inputElement.addEventListener("blur", (e) => {
       if (
-        e.target.id === "signupUsername" &&
+        e.target.id === "usernameNew" &&
         e.target.value.length > 0 &&
         e.target.value.length < 4
       ) {

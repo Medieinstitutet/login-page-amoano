@@ -12,29 +12,36 @@ const Newregister = document.querySelector('[type="Newregister"]');
 
 const Newname = document.querySelector('[type="Newname"]');
 const Newpassword = document.querySelector("#newpassword");
-let usernames = ["janne", "anwar", "amanda"];
-let passwords = ["test", "fest", "plate"];
+var usernames = ["janne", "anwar", "amanda"];
+var passwords = ["test", "fest", "fest"];
+
+if (localStorage.getItem("usernames") === null) {
+  localStorage.setItem("usernames", usernames);
+  localStorage.setItem("passwords", passwords);
+}
 
 let i = window.localStorage.getItem("logged in");
 
 function submitfunction() {
-  let pos = usernames.indexOf(username.value);
+  let localusers = localStorage.getItem("usernames");
+  let localpasswords = localStorage.getItem("passwords");
+  let localsplitusers = localusers.split(",");
+  let localsplitpassword = localpasswords.split(",");
+  let pos = localsplitusers.indexOf(username.value);
   if (
-    usernames.includes(username.value) &&
-    password.value == passwords.at(pos)
+    localsplitusers.includes(username.value) &&
+    password.value == localsplitpassword.at(pos)
   ) {
     localStorage.setItem("logged in", "true");
     formspan.style.display = "none";
     logout.style.display = "inline";
     logintext.innerHTML =
       username.value +
-      ". Välkommen in i värmen. Vi får hoppas att allt fungerar som det ska. Lite stelt att behöva trycka på registrera två gånger bara :(";
+      ", jag måste säga att det är kul att ha dig här. Vi får hoppas att allt fungerar som det ska. Lite stelt att behöva trycka på registrera två gånger bara :(";
   } else {
-    logintext.innerHTML = "incorrect login";
+    logintext.innerHTML = "Fel användarnamn/lösenord";
   }
   localStorage.setItem("username", username.value);
-  localStorage.setItem("usernames", usernames);
-  localStorage.setItem("passwords", passwords);
 }
 
 if (i === "true") {
@@ -60,10 +67,14 @@ function registerfunction() {
 function newregisterfunction() {
   passwords.push(Newpassword.value);
   usernames.push(Newname.value);
-  let storepasswords = [localStorage.getItem("usernames")];
-  let storeusernames = [localStorage.getItem("passwords")];
+  let storepasswords = [localStorage.getItem("passwords")];
+  let storeusernames = [localStorage.getItem("usernames")];
   storepasswords.push(Newpassword.value);
   storeusernames.push(Newpassword.value);
+  localStorage.setItem("usernames", storeusernames);
+  localStorage.setItem("passwords", storepasswords);
+  console.log(storeusernames);
+  console.log("Välkommen");
   logintext.innerHTML =
     "Välkommen  " + Newname.value + ", du har nu registrerat dig!";
   registerPage.style.transform = "translateY(1000%)";

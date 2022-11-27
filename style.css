@@ -1,0 +1,54 @@
+:root {
+    --font: 'Roboto', sans-serif;
+}
+
+body {
+    font-family: var(--font);
+    height: 100vh;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.register,
+.Login,
+.register>*,
+.Login>*,
+.register>*>*,
+.Login>*>* {
+    margin: 2%;
+    padding: 2%;
+}
+
+.loginform {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    margin: 0;
+}
+
+h3 {
+    margin-top: 0;
+}
+
+button[type="logout"] {
+    display: none;
+}
+
+.register {
+    transform: translateY(1000%);
+    -webkit-transform: translateY(1000%);
+    -moz-transform: translateY(1000%);
+    -ms-transform: translateY(1000%);
+    -o-transform: translateY(1000%);
+    transition: all .2s ease;
+    -webkit-transition: all .4s ease-out;
+    -moz-transition: all .4s ease;
+    -ms-transition: all .4s ease;
+    -o-transition: all .4s ease;
+}
